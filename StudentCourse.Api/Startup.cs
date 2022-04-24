@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using StudentCourse.Data.Models;
 using StudentCourse.Data.Repository;
 using System;
@@ -47,6 +48,16 @@ namespace StudentCourse.Api
             services.AddScoped<IRepository<Students>, StudentsRepository>();
             services.AddScoped<IRepository<Courses>, CoursesRepository>();
             //services.AddScoped<IRepository<Vacations>, VacationsRepository>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "WebCoreApi API"
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +67,12 @@ namespace StudentCourse.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
 
