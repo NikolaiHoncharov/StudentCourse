@@ -29,7 +29,7 @@ function StudentList() {
             <ul>
                 {students.map(item => (
                     <li style={styles.li} key={item.id}>
-                        {index++}. {item.fullName} / {item.email}
+                        {index++}. Id: {item.id} / ФИО: {item.fullName} / Email: {item.email}
                     </li>
                 ))}
               </ul>
