@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCourse.Api", "StudentCourse.Api\StudentCourse.Api.csproj", "{F17869D3-57F8-4FDE-8F82-7DBF4593D4A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCourse.Data", "StudentCourse.Data\StudentCourse.Data.csproj", "{19BEBFCA-C6C3-489F-8767-687119F3A884}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "StudentCourse.ReactjsClient", "StudentCourse.ReactjsClient\StudentCourse.ReactjsClient.esproj", "{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F17869D3-57F8-4FDE-8F82-7DBF4593D4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17869D3-57F8-4FDE-8F82-7DBF4593D4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17869D3-57F8-4FDE-8F82-7DBF4593D4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17869D3-57F8-4FDE-8F82-7DBF4593D4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BEBFCA-C6C3-489F-8767-687119F3A884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BEBFCA-C6C3-489F-8767-687119F3A884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BEBFCA-C6C3-489F-8767-687119F3A884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BEBFCA-C6C3-489F-8767-687119F3A884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0AB90B-75F5-4C21-A4C7-B0280777E1A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AADE0DD-BA8D-45B2-BE6B-00C1421FA425}
+	EndGlobalSection
+EndGlobal
