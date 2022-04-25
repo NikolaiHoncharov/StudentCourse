@@ -6,6 +6,7 @@ function AddCourse() {
     const [enddate, setendDate] = useState("");
     const [message, setMessage] = useState("");
 
+
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -16,9 +17,9 @@ function AddCourse() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                   studentsid:studentsid,
-                    startdate: startdate,
-                    enddate: enddate,
+                    "studentsId": studentsid,
+                    "startDate": "2022-08-22T00:00:00",
+                    "endDate": "2022-09-02T00:00:00"
                 }),
             });
             let resJson = await res.json();
@@ -26,6 +27,7 @@ function AddCourse() {
                 setstudentsId("");
                 setstartDate("");
                 setendDate("");
+
                 setMessage("User created successfully");
             } else {
                 setMessage("Some error occured");
@@ -34,6 +36,7 @@ function AddCourse() {
             console.log(err);
         }
     };
+
 
     return (
         <div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from 'prop-types'
 
-function AddStudent() {
+function AddStudent({ onCreate }) {
     const [fullname, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -21,8 +22,10 @@ function AddStudent() {
             });
             let resJson = await res.json();
             if (res.status === 200) {
+                onCreate(fullname, email);
                 setFullName("");
                 setEmail("");
+               
                 setMessage("User created successfully");
             } else {
                 setMessage("Some error occured");
@@ -32,19 +35,24 @@ function AddStudent() {
         }
     };
 
+
     return (
         <div>
             <h2>Добавление студента</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={fullname} placeholder="Полное имя"
-                    onChange={(e) => setFullName(e.target.value)}/>
+                    onChange={(e) => setFullName(e.target.value)} required/>
                 <input type="text" value={email} placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}/>
+                    onChange={(e) => setEmail(e.target.value)} required/>
                 <button type="submit">Добавить</button>
                 <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
         </div>
     );
+}
+
+AddStudent.propTypes = {
+    onCreate: PropTypes.func.isRequired
 }
 
 export default AddStudent;

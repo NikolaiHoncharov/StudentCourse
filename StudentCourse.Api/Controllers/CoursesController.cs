@@ -64,12 +64,12 @@ namespace StudentCourse.Api.Controllers
                     d.StartDate <= value.EndDate && d.EndDate >= value.EndDate) != null))
             {
                 contextCourses.Add(value);
+                return Ok();
             }
             else
             {
                 return BadRequest();
             }
-            return Ok();
         }
 
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Loader from '../Loader'
+import AddStudent from './AddStudent'
 
 const styles = {
     li: {
@@ -27,6 +28,16 @@ function StudentList() {
             })
     }, [])
 
+    function addStud(fullname, email) {
+        setStudents(
+            students.concat([
+                {
+                    fullName: fullname,
+                    email: email
+                }
+            ])
+        )
+    }
 
     return (
         <div>
@@ -38,10 +49,12 @@ function StudentList() {
                         {index++}. Id: {item.id} / ФИО: {item.fullName} / Email: {item.email}
                     </li>
                 ))}
-              </ul>
+            </ul>
+            <div>
+                <AddStudent onCreate={addStud} />
+            </div>
         </div>
     );
 }
-
 
 export default StudentList
