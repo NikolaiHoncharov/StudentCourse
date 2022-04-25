@@ -2,6 +2,7 @@ import React from 'react'
 import StudentList from './Component/StudentList'
 import AddStudent from './Component/AddStudent'
 
+
 function App() {
     return (
         <div className='wrapper'>
