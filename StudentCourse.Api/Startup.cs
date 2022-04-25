@@ -40,7 +40,7 @@ namespace StudentCourse.Api
 
             services.AddControllers();
 
-            string connectionString = Configuration.GetConnectionString("AzureConnection");
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<StudentCourseContext>(builder =>
                  builder.UseSqlServer(connectionString, b => b.MigrationsAssembly("WebApiCore.Api"))
              );
