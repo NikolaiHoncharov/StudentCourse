@@ -41,6 +41,9 @@ function StudentList() {
 
     return (
         <div>
+             <div>
+                <AddStudent onCreate={addStud} />
+            </div>
             <h2>Список студентов: </h2>
             {loading && <Loader />}
             <ul>
@@ -50,9 +53,7 @@ function StudentList() {
                     </li>
                 ))}
             </ul>
-            <div>
-                <AddStudent onCreate={addStud} />
-            </div>
+           
         </div>
     );
 }

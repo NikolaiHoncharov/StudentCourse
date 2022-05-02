@@ -10,7 +10,7 @@ function AddStudent({ onCreate }) {
         e.preventDefault();
         try {
             let res = await fetch("https://localhost:44328/api/students", {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -22,11 +22,12 @@ function AddStudent({ onCreate }) {
             });
             let resJson = await res.json();
             if (res.status === 200) {
+                
+               
+                setMessage("User created successfully");
                 onCreate(fullname, email);
                 setFullName("");
                 setEmail("");
-               
-                setMessage("User created successfully");
             } else {
                 setMessage("Some error occured");
             }

@@ -15,9 +15,9 @@ function App() {
             <div>
                 <CourseList />
             </div>
-            <div>
-                <AddCourse />
-            </div>
+            {/*<div>*/}
+            {/*    <AddCourse />*/}
+            {/*</div>*/}
         </div>
     );
 }

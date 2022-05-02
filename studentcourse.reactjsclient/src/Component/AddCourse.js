@@ -11,7 +11,7 @@ function AddCourse() {
         e.preventDefault();
         try {
             let res = await fetch("https://localhost:44328/api/courses", {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'

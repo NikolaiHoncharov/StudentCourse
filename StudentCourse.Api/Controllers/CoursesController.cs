@@ -37,14 +37,13 @@ namespace StudentCourse.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Courses value)
         {
-            var t = (value.EndDate - value.StartDate).TotalDays + 3;
-            var nearestDiff = contextCourses.All.Where(d => d.StudentsId == value.StudentsId).Min(date => Math.Abs((date.EndDate - value.StartDate).Ticks));
-            var nearest = contextCourses.All.Where(date => date.StudentsId == value.StudentsId && Math.Abs((date.EndDate - value.StartDate).Ticks) == nearestDiff).FirstOrDefault();
-
-            if (nearest != null)
+            if (value != null && value.StartDate.DayOfWeek == DayOfWeek.Monday && value.EndDate.DayOfWeek == DayOfWeek.Friday
+                && value.StartDate < value.EndDate
+                && !(contextCourses.All.Where(d => d.StudentsId == value.StudentsId)
+                .FirstOrDefault(d => d.StartDate <= value.StartDate && d.EndDate >= value.StartDate ||
+                    d.StartDate <= value.EndDate && d.EndDate >= value.EndDate) != null))
             {
-                nearest.EndDate = nearest.EndDate.AddDays(t);
-                contextCourses.Update(nearest);
+                contextCourses.Add(value);
                 return Ok();
             }
             else
@@ -57,13 +56,15 @@ namespace StudentCourse.Api.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] Courses value)
         {
-            if (value != null && value.StartDate.DayOfWeek == DayOfWeek.Monday && value.EndDate.DayOfWeek == DayOfWeek.Friday 
-                && value.StartDate < value.EndDate
-                && !(contextCourses.All.Where(d => d.StudentsId == value.StudentsId)
-                .FirstOrDefault(d => d.StartDate <= value.StartDate && d.EndDate >= value.StartDate ||
-                    d.StartDate <= value.EndDate && d.EndDate >= value.EndDate) != null))
+            var t = (value.EndDate - value.StartDate).TotalDays + 3;
+            var tempAllCourses = contextCourses.All;
+            var nearestDiff = tempAllCourses.Where(d => d.StudentsId == value.StudentsId).Min(date => Math.Abs((date.EndDate - value.StartDate).Ticks));
+            var nearest = tempAllCourses.Where(date => date.StudentsId == value.StudentsId && Math.Abs((date.EndDate - value.StartDate).Ticks) == nearestDiff).FirstOrDefault();
+
+            if (nearest != null)
             {
-                contextCourses.Add(value);
+                nearest.EndDate = nearest.EndDate.AddDays(t);
+                contextCourses.Update(nearest);
                 return Ok();
             }
             else

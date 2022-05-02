@@ -37,21 +37,6 @@ namespace StudentCourse.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Students value)
         {
-            if (value != null && contextStudents.All.FirstOrDefault(d => d.Id == value.Id) != null)
-            {
-                contextStudents.Update(value);
-            }
-            else
-            {
-                return BadRequest();
-            }
-            return Ok();
-        }
-
-        // PUT api/<StudentsController>
-        [HttpPut]
-        public IActionResult Put([FromBody] Students value)
-        {
             if (value != null && contextStudents.All.FirstOrDefault(d => d.Email == value.Email) == null)
             {
                 contextStudents.Add(value);
@@ -61,6 +46,21 @@ namespace StudentCourse.Api.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        // PUT api/<StudentsController>
+        [HttpPut]
+        public IActionResult Put([FromBody] Students value)
+        {
+            if (value != null && contextStudents.All.FirstOrDefault(d => d.Id == value.Id) != null)
+            {
+                contextStudents.Update(value);
+            }
+            else
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
 
         // DELETE api/<StudentsController>/5
